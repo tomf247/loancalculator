@@ -5,6 +5,8 @@ form.addEventListener('submit', e => {
 
 	e.preventDefault();
 
+    let loan = new LoanObject();
+    
 	if (loan.validate()) {
 
         loan.calcMonthlyPayment();     // A fixed amount paid each period.	
