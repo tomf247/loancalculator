@@ -1,22 +1,32 @@
 const form = document.getElementById('form');
-
+let loanChart = ''
 
 form.addEventListener('submit', e => {
 
 	e.preventDefault();
+	
+	// App flow is directed from this funcion.
 
-    let loan = new LoanObject();
+	let loan = new LoanObject();
 
-	if (loan.validate()) {
+	// The three variables below are for the Chart Object.
+	data = [];
+	labels=[];
+	paidToDate = [];
+		
+		if (loan.validate()) {
 
-        loan.calcMonthlyPayment();     // A fixed amount paid each period.
-        
-        loan.buildPaymentPlan();       // Apportions between balance and interest per period.
+			loan.calcMonthlyPayment();     // A fixed amount paid each period.
 
-        loan.buildHTMLTable();         // With the payment plan built, display it to user.
+			loan.buildPaymentPlan();       // Apportions between balance and interest per period.
 
-    }
-}
+			loan.buildHTMLTable();         // With the payment plan built, display it to user.
+
+			loan.buildChart();	           // Display payments and running balance
+		}
+
+	}	
+	
 );
 
 class LoanObject {
@@ -157,7 +167,7 @@ class LoanObject {
 		  ];
 
 		}
-        
+
 		return this.paymentPlan;
 		
 	}
@@ -192,6 +202,39 @@ class LoanObject {
 		  tablerows += '</tbody></table>';
 		  tbody.innerHTML = tablerows;
 	 
+	}
+
+    buildChart() {
+		if (loanChart) {
+			loanChart.destroy();
+		  }
+		let chartContext = document.getElementById('graph-canvas').getContext("2d");
+		data, labels, paidToDate = [];
+		for (let amt = 0; amt < this.paymentPlan.length; amt++) {
+			data.push(this.paymentPlan[amt][5]);
+			labels.push("Month " + (this.paymentPlan[amt][0]));
+			paidToDate.push(this.monthlyPayment * (amt + 1));
+		}
+		loanChart = new Chart(chartContext, {
+			type: "bar",
+			  data: {
+				labels,
+				datasets: [
+				  {
+					label: "Amount Owing",
+					data,
+					fill: true,
+					backgroundColor: "rgba(12, 141, 0, 0.7)",
+				  },
+				  {
+					label: "Payments Made",
+					fill: true,
+					backgroundColor: "rgba(104, 158, 217, 0.8)",
+					data: paidToDate,
+				  },
+				],
+			  },
+		}   );
 	}
 }
 
