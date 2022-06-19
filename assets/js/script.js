@@ -8,8 +8,9 @@ form.addEventListener('submit', e => {
 	// App flow is directed from this funcion.
 
 	let loan = new LoanObject();
+	loan.clearViewport();          // Prevent any prior data from being displayed.
 
-	// The three variables below are for the Chart Object.
+	// The three variables below are for the Chart Object,which needs the DOM for scope.
 	data = [];
 	labels=[];
 	paidToDate = [];
@@ -22,7 +23,7 @@ form.addEventListener('submit', e => {
 
 			loan.buildHTMLTable();         // With the payment plan built, display it to user.
 
-			loan.buildChart();	           // Display payments and running balance
+			loan.buildChart();	           // Display the payment plan graphically.
 		}
 
 	}	
@@ -235,6 +236,34 @@ class LoanObject {
 				],
 			  },
 		}   );
+	}
+
+    clearViewport () {
+
+		let tbody = document.getElementById('tbody'); //Empty old table values
+		tbody.innerHTML = '';
+		document.getElementById('amt').innerHTML = 0.00
+		document.getElementById('pmt').innerHTML = 0.00
+		document.getElementById('period').innerHTML = 0
+
+
+
+		try {   
+
+			if (loanChart) {            // Clear previous chart object (if any).
+
+				loanChart.destroy();
+				chartContext = null;
+			}
+
+		  }
+
+		   catch(e) {
+			let loanChart = ''
+			
+		 	let chartContext = document.getElementById('graph-canvas').getContext("2d");
+
+		   }
 	}
 }
 
