@@ -4,22 +4,22 @@ let loanChart = ''
 form.addEventListener('submit', e => {
 
 	e.preventDefault();
-	
-	// App flow is directed from this funcion.
 
 	let loan = new LoanObject();
 	loan.clearViewport();          // Prevent any prior data from being displayed.
 
 	// The three variables below are for the Chart Object,which needs the DOM for scope.
-	data = [];
+
+	chartAmountOwing = [];
 	labels=[];
-	paidToDate = [];
+	chartPaidToDate = [];
+
 		
-		if (loan.validate()) {
+		if (loan.validate()) {             // Begin app flow.
 
 			loan.calcMonthlyPayment();     // A fixed amount paid each period.
 
-			loan.buildPaymentPlan();       // Apportions between balance and interest per period.
+			loan.buildPaymentPlan();       // Apportions payment between balance and interest per period.
 
 			loan.buildHTMLTable();         // With the payment plan built, display it to user.
 
@@ -57,7 +57,7 @@ class LoanObject {
 			setErrorFor(this.loanAmount, 'The loan amount should not be blank');
 		} else if (this.loanAmountValue < 1){
 			amountValidated = false;
-			setErrorFor(this.loanAmount, 'The loan amount must be greater than one');
+			setErrorFor(this.loanAmount, 'The loan amount should be greater than one');
 		} else if (this.loanAmountValue % 1 != 0){
 			amountValidated = false;
 			setErrorFor(this.loanAmount, 'Numeric digits, no decimals please');
@@ -81,7 +81,7 @@ class LoanObject {
 		
 		if(this.loanTenureValue === '') {
 			tenureValidated = false;
-			setErrorFor(this.loanTenure, 'The loan term cannot be blank');
+			setErrorFor(this.loanTenure, 'The loan term should not be blank');
 		} else if (this.loanTenureValue < 1){
 			tenureValidated = false;
 			setErrorFor(this.loanTenure, 'The term should not be negative');
@@ -210,11 +210,11 @@ class LoanObject {
 			loanChart.destroy();
 		  }
 		let chartContext = document.getElementById('graph-canvas').getContext("2d");
-		data, labels, paidToDate = [];
+		chartAmountOwing, labels, chartPaidToDate = [];
 		for (let amt = 0; amt < this.paymentPlan.length; amt++) {
-			data.push(this.paymentPlan[amt][5]);
+			chartAmountOwing.push(this.paymentPlan[amt][5]);
 			labels.push("Month " + (this.paymentPlan[amt][0]));
-			paidToDate.push(this.monthlyPayment * (amt + 1));
+			chartPaidToDate.push(this.monthlyPayment * (amt + 1));
 		}
 		loanChart = new Chart(chartContext, {
 			type: "bar",
@@ -223,7 +223,7 @@ class LoanObject {
 				datasets: [
 				  {
 					label: "Amount Owing",
-					data,
+					data: chartAmountOwing,
 					fill: true,
 					backgroundColor: "rgba(12, 141, 0, 0.7)",
 				  },
@@ -231,7 +231,7 @@ class LoanObject {
 					label: "Payments Made",
 					fill: true,
 					backgroundColor: "rgba(104, 158, 217, 0.8)",
-					data: paidToDate,
+					data: chartPaidToDate,
 				  },
 				],
 			  },
