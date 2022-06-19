@@ -125,3 +125,47 @@ text-align: center;
 	width: 100%;
 	cursor:pointer;
 }
+
+.tableFixHead {
+    overflow: auto;
+    height: 106px;
+    margin: auto;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+	flex: 1 1 90%;
+}
+
+th,
+td {
+    padding: 3px 6px;
+    border: 1px solid #ccc;
+    margin:auto;
+	text-align:center;
+}
+
+th {
+    background: #eee;
+}
+
+tfoot {
+	background: #eee;
+}
+
+tfoot i.fa-check-circle {
+	color: #2ecc71;
+}
+
+.allocation {
+	flex: 0 1 100%;
+	max-width: 100%;
+	background: #fff;
+	text-align: center;
+}
