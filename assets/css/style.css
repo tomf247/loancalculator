@@ -45,6 +45,13 @@ text-align: center;
 	max-width: 100%;
 }
 
+.chart {
+	flex: 1 1 800px;
+	max-width: 100%;
+	background: #fff;
+	text-align: center;
+}
+
 .form {
 	padding: 30px 40px;	
 }
