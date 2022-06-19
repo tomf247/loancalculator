@@ -80,6 +80,27 @@ class LoanObject {
 		return inputsValidated; // true or false
 			
 	}
+    
+    calcMonthlyPayment () {
+
+		// as per industry standard
+
+		this.monthlyPayment =
+
+		  this.loanAmountValue * (this.interestRateValue / 100 / 12) *
+
+		  Math.pow(1 + this.interestRateValue / 100 / 12, this.loanTenureValue) /
+
+		  (Math.pow(1 + this.interestRateValue / 100 / 12, this.loanTenureValue) - 1);
+		
+		// output to the viewport
+
+		document.getElementById('amt').innerHTML = this.loanAmountValue.toLocaleString();
+		document.getElementById('pmt').innerHTML = this.monthlyPayment.toFixed(2);
+		document.getElementById('period').innerHTML = this.loanTenureValue.toLocaleString();
+
+		return this.monthlyPayment;
+	}
 }
 
 function setErrorFor(input, message) {
