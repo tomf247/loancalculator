@@ -11,13 +11,66 @@
 <body>
     <div class="header"><h2>Mortgage Payment & Amortization Calculator</h2>
 
-        <img src="/assets/images/mortgage-splash.jpg" alt="Mortgage Calculator"/> 
+        <img src="/assets/images/mortgage-hero.jpg" alt="Mortgage Calculator"/> 
         <div>A calculator which assists you to forecast the monthly payment needed
           to repay a mortgage loan, for the amount, rate and term that you specify. Additionally, 
           a table and chart display the allocation of payments.
         </div>
     
-      </div>
+    </div>
+
+    <div class="parent">
+
+        <div class="input-container">
+
+          <div class="child">
+
+            <h2>Loan Terms</h2>
+          </div>
+          
+          <form id="form" class="form">
+            <div class="form-control">
+              <label for="loan-amount">Loan Amount:</label>
+              <input
+                type="number"
+                name="loan-amount"
+                step="any"
+                id="loan-amount"
+              />
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+              <small>Error message</small>
+            </div>
+  
+            <div class="form-control">
+              <label for="interest-rate">Interest Rate:</label>
+              <input
+                type="number"
+                name="interest-rate"
+                step=".25"
+                id="interest-rate"
+              />
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+              <small>Error message</small>
+            </div>
+  
+            <div class="form-control">
+              <label for="loan-tenure">Loan Term (months):</label>
+              <input
+                type="number"
+                name="loan-tenure"
+                step="any"
+                id="loan-tenure"
+              />
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+              <small>Error message</small>
+            </div>
+  
+            <button>Calculate</button>
+          </form>
+        </div>
 
     <script src="https://kit.fontawesome.com/e6dfa6659b.js" crossorigin="anonymous"></script>    
 </body>
