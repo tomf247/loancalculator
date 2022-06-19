@@ -169,3 +169,9 @@ tfoot i.fa-check-circle {
 	background: #fff;
 	text-align: center;
 }
+
+.child span{
+	font-size: larger;
+	color:black;
+	font-weight: bold;
+} 
