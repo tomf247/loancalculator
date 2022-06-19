@@ -5,9 +5,10 @@ form.addEventListener('submit', e => {
 
 	e.preventDefault();
 
-	let loan = new LoanObject();
-    
-    console.log(loan.validate());
+	if (loan.validate()) {
+
+        loan.calcMonthlyPayment();     // A fixed amount paid each period.	
+    }
 }
 );
 
@@ -80,7 +81,7 @@ class LoanObject {
 		return inputsValidated; // true or false
 			
 	}
-    
+
     calcMonthlyPayment () {
 
 		// as per industry standard
