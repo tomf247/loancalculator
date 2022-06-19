@@ -6,10 +6,15 @@ form.addEventListener('submit', e => {
 	e.preventDefault();
 
     let loan = new LoanObject();
-    
+
 	if (loan.validate()) {
 
-        loan.calcMonthlyPayment();     // A fixed amount paid each period.	
+        loan.calcMonthlyPayment();     // A fixed amount paid each period.
+        
+        loan.buildPaymentPlan();       // Apportions between balance and interest per period.
+
+        loan.buildHTMLTable();         // With the payment plan built, display it to user.
+
     }
 }
 );
@@ -103,6 +108,90 @@ class LoanObject {
 		document.getElementById('period').innerHTML = this.loanTenureValue.toLocaleString();
 
 		return this.monthlyPayment;
+	}
+
+    buildPaymentPlan() {
+    
+		this.paymentPlan = [] ; 
+		let _monthlyPayment = this.monthlyPayment;
+		let _amountTowardsInterest = 0;
+		let _amountTowardsBalance = 0;
+		let _runningBalancePaid = this.loanAmountValue;
+		let _runningInterestPaid = 0;
+	
+		for (let _row = 0; _row < this.loanTenureValue; _row++) {
+
+		// another industry standard calculation
+
+
+		  _amountTowardsInterest = ((this.interestRateValue / 100 / 12) * _runningBalancePaid);
+	
+		  if (_monthlyPayment > _runningBalancePaid) {
+				_monthlyPayment = _runningBalancePaid + _amountTowardsInterest;
+		  }
+
+		  _amountTowardsBalance = _monthlyPayment - _amountTowardsInterest;
+
+		  _runningInterestPaid = _runningInterestPaid + _amountTowardsInterest;
+
+		  _runningBalancePaid = _runningBalancePaid - _amountTowardsBalance;
+
+
+		// Add results to an array. Can be used as basis for further financial modelling.
+
+
+		  this.paymentPlan[_row] = [
+
+			_row + 1, // Add 1 to zero-based count, for display purposes. 
+
+			parseFloat(_monthlyPayment.toFixed(2)),
+
+			parseFloat(_amountTowardsBalance.toFixed(2)),
+
+			parseFloat(_amountTowardsInterest.toFixed(2)),
+
+			parseFloat(_runningInterestPaid.toFixed(2)),
+
+			parseFloat(_runningBalancePaid.toFixed(2)),
+
+		  ];
+
+		}
+        
+		return this.paymentPlan;
+		
+	}
+
+    buildHTMLTable() {
+
+		// DOM API may be cleaner, here is innerHTML manipulation. Can change in future.
+		// Use the Payment Plan object to display table.
+
+
+		// Opening Tags
+
+		let tbody = document.getElementById('tbody');
+		tbody.innerHTML ='';
+		let tablerows = '<tr>';
+
+
+		// One row per payment, with six columns.
+
+		for (let row = 0; row < this.paymentPlan.length; row++) { 
+
+			for (let column = 0; column < 6; column++) {
+
+				tablerows += '<td>' + this.paymentPlan[row][column].toLocaleString() + '</td>';
+			}
+
+		  	tablerows += '</tr>';
+		}
+
+		// Closing tags
+
+		  tablerows += '</tbody></table>';
+		  tbody.innerHTML = tablerows;
+	 
 	}
 }
 

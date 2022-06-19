@@ -71,6 +71,7 @@
             <button>Calculate</button>
           </form>
         </div>
+        
         <div class="child">
 
             <h2>Mortgage Payment & Amortization Calculator</h2>
@@ -80,8 +81,49 @@
               be <span id="pmt">0.00</span> <br />
               payable over a period of <span id="period"> 0</span> months.
             </p>
-            
-          </div>
+
+        </div>
+
+        <div class="allocation">
+            <h2>Allocation of Payments</h2>
+    
+            <table id="loan-info" class="tableFixHead">
+              <thead>
+                <tr>
+                  <th><span class="text">Month</span></th>
+                  <th><span class="text">Payment</span></th>
+                  <th>
+                    <span class="text">Towards<br />Principal</span>
+                  </th>
+                  <th>
+                    <span class="text">Towards<br />Interest</span>
+                  </th>
+                  <th>
+                    <span class="text">Interest Paid<br />to Date</span>
+                  </th>
+                  <th><span class="text">Loan Balance</span></th>
+                </tr>
+              </thead>
+              <tfoot>
+                <td colspan="6">
+                  End of table <i class="fas fa-check-circle"></i>
+                </td>
+              </tfoot>
+              <tbody id="tbody">
+                <tr>
+                  <td>0</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                  <td>0.00</td>
+                </tr>
+              </tbody>
+            </table>
+
+        </div>
+
+    </div>
 
     <script src="https://kit.fontawesome.com/e6dfa6659b.js" crossorigin="anonymous"></script>    
 </body>
