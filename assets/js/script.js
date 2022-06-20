@@ -118,7 +118,7 @@ class LoanObject {
 		document.getElementById('pmt').innerHTML = this.monthlyPayment.toFixed(2);
 		document.getElementById('period').innerHTML = this.loanTenureValue.toLocaleString();
 
-		return this.monthlyPayment;
+		return this.monthlyPayment;   
 	}
 
     buildPaymentPlan() {
@@ -169,7 +169,7 @@ class LoanObject {
 
 		}
 
-		return this.paymentPlan;
+		return this.paymentPlan;      
 		
 	}
 
