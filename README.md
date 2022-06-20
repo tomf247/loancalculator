@@ -72,9 +72,13 @@ An individual or couple may wish to estimate tax implications in having a mortga
 
 
 - Lighthouse
-    - The desktop scores on Lighthouse are 
+    - The MOBILE scores on Lighthouse are 
 
-![Lighthouse](/docs/loancalc-lighthouse.png "Lightouse")
+![LighthouseMobile](/docs/loancalc-lighthouse-mobile.png "Lightouse Mobile")
+
+    - while on DESKTOP, the Lighthouse scores are
+
+![LighthouseDesktop](/docs/loancalc-lighthouse-desktop.png "Lightouse Desktop")
 
 
 
