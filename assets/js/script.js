@@ -1,5 +1,5 @@
 const form = document.getElementById('form');
-let loanChart = ''
+let loanChart = '';
 
 form.addEventListener('submit', e => {
 
@@ -210,7 +210,6 @@ class LoanObject {
 			loanChart.destroy();
 		  }
 		let chartContext = document.getElementById('graph-canvas').getContext("2d");
-		chartAmountOwing, labels, chartPaidToDate = [];
 		for (let amt = 0; amt < this.paymentPlan.length; amt++) {
 			chartAmountOwing.push(this.paymentPlan[amt][5]);
 			labels.push("Month " + (this.paymentPlan[amt][0]));
@@ -242,9 +241,9 @@ class LoanObject {
 
 		let tbody = document.getElementById('tbody'); //Empty old table values
 		tbody.innerHTML = '';
-		document.getElementById('amt').innerHTML = 0.00
-		document.getElementById('pmt').innerHTML = 0.00
-		document.getElementById('period').innerHTML = 0
+		document.getElementById('amt').innerHTML = 0.00;
+		document.getElementById('pmt').innerHTML = 0.00;
+		document.getElementById('period').innerHTML = 0;
 
 
 
@@ -259,7 +258,7 @@ class LoanObject {
 		  }
 
 		   catch(e) {
-			let loanChart = ''
+			let loanChart = '';
 			
 		 	let chartContext = document.getElementById('graph-canvas').getContext("2d");
 
