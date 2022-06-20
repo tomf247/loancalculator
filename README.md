@@ -30,11 +30,15 @@ An individual or couple may wish to estimate tax implications in having a mortga
 
 ## Features
 
-Calculation Input Area
-Summary Section
-Bar-chart repayment visualization.
-Full monthly breakdown of interest paid, balances and running totals.
-Easy to perform what-if scenarios.
+### Calculation Input Area
+![Input Area](/docs/loancalc-input-area.png "Input Area")
+### Summary Section
+![Summary Section](/docs/loancalc-summary-section.png "Summary Section")
+### Bar-chart repayment visualization.
+![Payment Chart](/docs/loancalc-payment-chart.png "Payment Chart")
+### Full monthly breakdown of interest paid, balances and running totals.
+![Payments Table](/docs/loancalc-payments-table.png "Payments Table")
+### Easy to perform what-if scenarios.
 
 ## Responsive
 
