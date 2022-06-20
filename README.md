@@ -57,12 +57,24 @@ An individual or couple may wish to estimate tax implications in having a mortga
 
 - CSS
     - The CSS validates without error at w3.org 
-- ![CSSValidation](/docs/loancalc-css-valid.png "W3 CSS Validation")
+
+![CSSValidation](/docs/loancalc-css-valid.png "W3 CSS Validation")
+
+- JSHint
+    - Missing terminators were found and fixed. It flaged certain variables as undefined, 
+    however, these are used with the JS Chart library and are out of scope for the checker. They have 
+    been investigated and found to be valid.
+    - In addition a cyclomatic complexity value of 12 was flagged, 2 above the recommmended value. This is 
+    due to the input validation occuring in one function, which will need to be sepearated out if further input 
+    fields are added. But in this instance I don't think it's excessive.
+
+![JS Validation](/docs/loancalc-jshint.png "JS Hint Validation")
 
 
 - Lighthouse
     - The desktop scores on Lighthouse are 
--![Lighthouse](/docs/loancalc-lighthouse.png "Lightouse")
+
+![Lighthouse](/docs/loancalc-lighthouse.png "Lightouse")
 
 
 
@@ -71,7 +83,7 @@ An individual or couple may wish to estimate tax implications in having a mortga
     - Site displayed correctly when using "Toggle Device Toolbar" and resizing the page.
 
 - Techsini
-    - Page layouts displayed correctly on mobile, tablet and desktop. 
+    - Page layouts displayed correctly on mobile, tablet and desktop (See top image).
 
 - Unfixed Bugs
     - None
