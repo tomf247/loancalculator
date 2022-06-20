@@ -62,6 +62,7 @@ An individual or couple may wish to estimate tax implications in having a mortga
 
 - Lighthouse
     - The desktop scores on Lighthouse are 
+-![Lighthouse](/docs/loancalc-lighthouse.png "Lightouse")
 
 
 
