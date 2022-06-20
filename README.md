@@ -39,6 +39,11 @@ An individual or couple may wish to estimate tax implications in having a mortga
 ### Full monthly breakdown of interest paid, balances and running totals.
 ![Payments Table](/docs/loancalc-payments-table.png "Payments Table")
 ### Easy to perform what-if scenarios.
+### Non-scrolling header row on HTML table.
+The top row containing the column headings for the HTML table remains visible when
+there are more rows than displayed on the viewport.
+![Fixed HTML Headers](/docs/loancalc-fixed-HTML-headers.png "Fixed HTML Headers")
+
 
 ## Future Features
 
