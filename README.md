@@ -53,17 +53,17 @@ An individual or couple may wish to estimate tax implications in having a mortga
 
 - HTML
     - The HTML pointed out some errors in the table formatting which I then rectified.
- ![W3Validation](/docs/loancalc-w3-valid.png "W3 Validation")
+- ![W3Validation](/docs/loancalc-w3-valid.png "W3 Validation")
 
 - CSS
-    - The CSS validates without error at w3.org ![Valid](/docs/vcss-blue.gif "CSS is valid")
-![CSSValidation](/docs/loancalc-css-valid.png "W3 CSS Validation")
+    - The CSS validates without error at w3.org 
+- ![CSSValidation](/docs/loancalc-css-valid.png "W3 CSS Validation")
 
 
 - Lighthouse
     - The desktop scores on Lighthouse are 
 
-![Lighthouse](/docs/lighthouse-desktop-score.png "Lighthouse")
+
 
 - Browser Developer Tools
     - No erros in debug logs.
@@ -87,7 +87,7 @@ An individual or couple may wish to estimate tax implications in having a mortga
 - As sections were completed GIT was used to store the code in a Github repository
 - From the Github repository I used the repository settings item to scroll down to the Github Pages section and completed the publish procedure as shown in the image below.
 
-![github-pages](/docs/github-pages.png "Github Pages")
+![github-pages](/docs/loancalc-github-pages.png "Github Pages")
 
 The full URL to the site is https://tomf247.github.io/loancalculator/index.html
 
